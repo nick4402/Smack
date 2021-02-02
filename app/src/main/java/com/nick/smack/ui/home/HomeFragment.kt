@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        val textView: TextView = binding.mainChannelName
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
@@ -41,5 +41,9 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun sendMessageBtnClicked(view : View) {
+
     }
 }

@@ -10,35 +10,59 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/userImageHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/loginBtnHeader"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/profiledefault" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/userNameHeader"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Nick"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintStart_toEndOf="@+id/userImageHeader"
+        app:layout_constraintTop_toTopOf="@+id/userImageHeader" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/userEmailHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="nick4402@gmail.com"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toEndOf="@+id/userImageHeader"
+        app:layout_constraintTop_toBottomOf="@+id/userNameHeader" />
+
+    <Button
+        android:id="@+id/loginBtnHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/cardview_shadow_end_color"
+        android:onClick="loginBtnHeaderClicked"
+        android:text="LOGIN"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/addChannelBtnHeader"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/cardview_shadow_end_color"
+        android:onClick="addChannelBtnHeaderClicked"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/addchannelbutton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
