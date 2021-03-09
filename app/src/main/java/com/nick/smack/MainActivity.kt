@@ -8,6 +8,8 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -22,6 +24,7 @@ import com.nick.smack.databinding.ActivityMainBinding
 import com.nick.smack.services.AuthService
 import com.nick.smack.services.UserDataService
 import com.nick.smack.utility.BROADCAST_USER_DATA_CHANGE
+import kotlinx.android.synthetic.main.add_channel_dialog.view.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -90,8 +93,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-     fun addChannelBtnHeaderClicked(view : View) {
+    fun hideKeyboard() {
+        val inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        if (inputManager.isAcceptingText) {
+            inputManager.hideSoftInputFromWindow(currentFocus?.windowToken,0)
+        }
+    }
 
+    fun addChannelBtnHeaderClicked(view : View) {
+        if(AuthService.isLogin) {
+            val builder = AlertDialog.Builder(this)
+            val dialogView = layoutInflater.inflate(R.layout.add_channel_dialog,null)
+            builder.setView(dialogView)
+                .setPositiveButton("Add") { dialogInterface,i ->
+                    val channelName = dialogView.addChannelNameTxt.text
+                    val channelDesc = dialogView.addChannelDescTxt.text
+
+                    hideKeyboard()
+                }
+                .setNegativeButton("Calcel") { dialogInterface, i->
+                    hideKeyboard()
+                }.show()
+        }
     }
 
 
